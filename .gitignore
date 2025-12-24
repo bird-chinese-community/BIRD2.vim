@@ -1,0 +1,31 @@
+# Vim swap files
+*.swp
+*.swo
+*.swn
+*~
+
+# Compiled files
+*.vim.[co]
+
+# Tags
+tags
+TAGS
+
+# Documentation tags
+doc/tags
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+.*.sw*
+
+# Test coverage
+coverage/
+*.lcov

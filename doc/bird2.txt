@@ -1,0 +1,170 @@
+*bird2.txt*	BIRD2 Configuration Syntax for Vim
+
+Author:  BIRD Chinese Community <dev-bird@xmsl.dev>
+License: MPL-2.0
+Version: 1.0.6
+
+==============================================================================
+CONTENTS					*bird2-contents*
+
+    1. Introduction ................ |bird2-introduction|
+    2. Installation ................ |bird2-installation|
+    3. Filetype Detection ......... |bird2-filetype-detection|
+    4. Configuration ............... |bird2-configuration|
+    5. Syntax Highlighting ........ |bird2-syntax|
+    6. Commands .................... |bird2-commands|
+    7. Mappings .................... |bird2-mappings|
+    8. Related Projects ............ |bird2-related|
+    9. Changelog ................... |bird2-changelog|
+
+==============================================================================
+INTRODUCTION					*bird2-introduction*
+
+The bird2.vim plugin provides syntax highlighting and filetype detection for
+BIRD2 (BIRD Internet Routing Daemon) configuration files.
+
+BIRD is a dynamic IP routing daemon supporting IPv4 and IPv6 protocols,
+including BGP, OSPF, RIP, and static routing.
+
+Features:
+	- Full syntax highlighting for BIRD2 configuration
+	- Automatic filetype detection
+	- Heuristic detection for generic .conf files
+	- Filetype plugin with sensible defaults
+
+==============================================================================
+INSTALLATION					*bird2-installation*
+
+VIM-PLUG ~
+
+	Add to your .vimrc: >
+		Plug 'bird-chinese-community/bird2.vim'
+<
+
+VUNDLE ~
+
+	Add to your .vimrc: >
+		Plugin 'bird-chinese-community/bird2.vim'
+<
+
+PACK.NVIM (Vim 8+ / Neovim) ~
+
+	Clone to your pack directory: >
+		git clone https://github.com/bird-chinese-community/bird2.vim \
+		  ~/.vim/pack/plugins/start/bird2.vim
+<
+
+MANUAL ~
+
+	Run the install script: >
+		git clone https://github.com/bird-chinese-community/bird2.vim
+		cd bird2.vim
+		bash scripts/install.sh
+<
+
+After installation, generate help tags: >
+	:helptags ~/.vim/doc
+<
+
+==============================================================================
+FILETYPE DETECTION				*bird2-filetype-detection*
+
+The plugin automatically detects BIRD2 configuration files by:
+
+EXTENSIONS ~
+	*.bird, *.bird2, *.bird3, *.bird*.conf
+
+FILENAMES ~
+	bird.conf, bird6.conf
+
+CONTENT HEURISTICS ~
+	For generic .conf files, the plugin scans the first 200 lines for:
+	- Protocol definitions (protocol bgp, ospf, rip, etc.)
+	- Keywords: router id, template, filter, function, table
+	- Flow/ROA table definitions
+
+To verify filetype detection: >
+	:verbose set ft?
+<
+
+==============================================================================
+CONFIGURATION					*bird2-configuration*
+
+Disable heuristic detection: >
+	let g:bird2_heuristic_detect = 0
+<
+
+Add custom file extensions: >
+	autocmd BufRead,BufNewFile *.myext setfiletype bird2
+<
+
+Change comment string (default is #): >
+	autocmd FileType bird2 setlocal commentstring=#\ %s
+<
+
+==============================================================================
+SYNTAX HIGHLIGHTING				*bird2-syntax*
+
+The syntax file highlights:
+
+KEYWORDS ~
+	protocol, router, id, template, filter, function, table, define
+
+PROTOCOLS ~
+	bgp, ospf, rip, device, direct, kernel, pipe, babel, radv, rpki, bfd,
+	static, l3vpn, mrt, perf
+
+DATA TYPES ~
+	- Integers: 42, 0x1a
+	- Strings: "text", 'text'
+	- IP addresses: 192.168.1.1, 2001:db8::1
+	- Prefixes: 10.0.0.0/8, 2001:db8::/32
+	- AS numbers: 65000
+	- VPN route distinguishers: 65000:100
+
+COMMENTS ~
+	# Single-line comments
+	/* Multi-line comments */
+
+==============================================================================
+COMMANDS						*bird2-commands*
+
+No custom commands are provided by this plugin. Use standard Vim commands
+for file manipulation and configuration.
+
+==============================================================================
+MAPPINGS					*bird2-mappings*
+
+<Plug>Bird2Comment		Toggle comment (visual and normal mode)
+
+To map to a custom key: >
+	xmap <leader>c <Plug>Bird2Comment
+	nmap <leader>c <Plug>Bird2Comment
+<
+
+==============================================================================
+RELATED PROJECTS					*bird2-related*
+
+BIRD-tm-language-grammar ~
+	TextMate grammar for BIRD2
+	https://github.com/bird-chinese-community/bird-tm-language-grammar
+
+bird2.nvim ~
+	Neovim plugin with Lua support
+	https://github.com/bird-chinese-community/bird2.nvim
+
+vscode-bird2 ~
+	VS Code extension
+	https://github.com/bird-chinese-community/vscode-bird2-conf
+
+==============================================================================
+CHANGELOG					*bird2-changelog*
+
+1.0.6 (2025-08-08)~
+	- Initial release
+	- Syntax highlighting for BIRD2 2.17+
+	- Filetype detection with heuristics
+	- Filetype plugin support
+
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:
