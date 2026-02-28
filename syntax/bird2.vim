@@ -1,10 +1,10 @@
 " Vim syntax file
 " Language: BIRD2 Configuration
 " Scope:    BIRD2 config files (bird2, .conf)
-" Version:  1.0.6-20250808
+" Version:  1.0.7-20260228
 " License:  MPL-2.0
 " Author:   BIRD Chinese Community (Alice39s) <dev-bird@xmsl.dev>
-" Based on: grammars/bird2.tmLanguage.json (1.0.6-20250808)
+" Based on: grammars/bird2.tmLanguage.json (1.0.7-20260228)
 
 " ------------------------
 " Initialization
@@ -160,6 +160,9 @@ syn keyword bird2ProtocolTypeKw static rip ospf bgp babel rpki bfd device direct
 syn keyword bird2RoutingKw  graceful restart preference disabled hold keepalive connect retry start delay error wait forget scan randomize router id route neighbor
 " Interface keywords
 syn keyword bird2InterfaceKw interface type wired wireless tunnel rxcost limit hello update interval port tx class dscp priority rx buffer length check link rtt cost min max decay send timestamps
+" RPKI keywords
+syn keyword bird2RpkiKw      refresh expire transport ssh tcp user address version ignore private public key
+syn match   bird2RpkiPhraseKw "\<\%(local\s\+address\|ignore\s\+max\s\+length\|min\s\+version\|max\s\+version\|bird\s\+private\s\+key\|remote\s\+public\s\+key\)\>"
 " Authentication keywords
 syn keyword bird2AuthKw     authentication none mac permissive password generate accept from to algorithm hmac sha1 sha256 sha384 sha512 blake2s128 blake2s256 blake2b256 blake2b512
 " Time keyword
@@ -169,7 +172,7 @@ syn keyword bird2ConfigKw   hostname description debug log syslog stderr bird pr
 " Flowspec keywords
 syn keyword bird2FlowspecKw flow4 flow6 dst src proto header dport sport icmp code tcp flags dscp dont_fragment is_fragment first_fragment last_fragment fragment label offset
 " Address keywords
-syn keyword bird2AddressKw  vpn mpls aspa roa roa6
+syn keyword bird2AddressKw  vpn vpn4 vpn6 mpls aspa roa roa4 roa6
 
 " ------------------------
 " Semantic Modifiers (repository.semantic-modifiers)
@@ -281,7 +284,7 @@ syn match  bird2Delimiter   "[{}()\[\];,]"
 " ------------------------
 " Cluster for all patterns
 " ------------------------
-syn cluster bird2All contains=bird2Comment,bird2String,bird2Escape,bird2HexNumber,bird2Number,bird2TimeUnit,bird2IPv4,bird2IPv6,bird2VpnRD,bird2ByteString,bird2BgpPath,bird2BgpWildcard,bird2ASN,bird2Prefix,bird2FilterDef,bird2FunctionDef,bird2TemplateDef,bird2ProtocolDefWithTemplate,bird2ProtocolDefWithName,bird2ProtocolDefAnonymous,bird2NextHopIPv4,bird2NextHopIPv6,bird2NextHopSelf,bird2ExtendedNextHop,bird2NeighborStmt,bird2SourceAddress,bird2ImportFilter,bird2ImportFilterInline,bird2ExportWhere,bird2ExportFilter,bird2PrintStmt,bird2ControlFlow,bird2CaseElse,bird2FlowControl,bird2Structure,bird2ProtocolTypeKw,bird2RoutingKw,bird2InterfaceKw,bird2AuthKw,bird2TimeKw,bird2ConfigKw,bird2FlowspecKw,bird2AddressKw,bird2SemanticModifier,bird2BuiltinFunc,bird2Property,bird2RouteAttr,bird2Type,bird2Comparison,bird2Logical,bird2Arithmetic,bird2Range,bird2Assignment,bird2Accessor,bird2BoolConst,bird2SpecialConst,bird2ScopeConst,bird2SourceConst,bird2DestConst,bird2RoaConst,bird2AspaConst,bird2NetConst,bird2MplsConst,bird2FilterReference,bird2UserVariable,bird2FunctionCall,bird2MethodCall,bird2PropertyAccess,bird2VarDecl,bird2Variable,bird2Delimiter,bird2Keyword
+syn cluster bird2All contains=bird2Comment,bird2String,bird2Escape,bird2HexNumber,bird2Number,bird2TimeUnit,bird2IPv4,bird2IPv6,bird2VpnRD,bird2ByteString,bird2BgpPath,bird2BgpWildcard,bird2ASN,bird2Prefix,bird2FilterDef,bird2FunctionDef,bird2TemplateDef,bird2ProtocolDefWithTemplate,bird2ProtocolDefWithName,bird2ProtocolDefAnonymous,bird2NextHopIPv4,bird2NextHopIPv6,bird2NextHopSelf,bird2ExtendedNextHop,bird2NeighborStmt,bird2SourceAddress,bird2ImportFilter,bird2ImportFilterInline,bird2ExportWhere,bird2ExportFilter,bird2PrintStmt,bird2ControlFlow,bird2CaseElse,bird2FlowControl,bird2Structure,bird2ProtocolTypeKw,bird2RoutingKw,bird2InterfaceKw,bird2RpkiKw,bird2RpkiPhraseKw,bird2AuthKw,bird2TimeKw,bird2ConfigKw,bird2FlowspecKw,bird2AddressKw,bird2SemanticModifier,bird2BuiltinFunc,bird2Property,bird2RouteAttr,bird2Type,bird2Comparison,bird2Logical,bird2Arithmetic,bird2Range,bird2Assignment,bird2Accessor,bird2BoolConst,bird2SpecialConst,bird2ScopeConst,bird2SourceConst,bird2DestConst,bird2RoaConst,bird2AspaConst,bird2NetConst,bird2MplsConst,bird2FilterReference,bird2UserVariable,bird2FunctionCall,bird2MethodCall,bird2PropertyAccess,bird2VarDecl,bird2Variable,bird2Delimiter,bird2Keyword
 
 " ------------------------
 " Links to default highlight groups
@@ -339,6 +342,8 @@ hi def link bird2Keyword          Keyword
 hi def link bird2ProtocolTypeKw   Keyword
 hi def link bird2RoutingKw        Keyword
 hi def link bird2InterfaceKw      Keyword
+hi def link bird2RpkiKw           Keyword
+hi def link bird2RpkiPhraseKw     Keyword
 hi def link bird2AuthKw           Keyword
 hi def link bird2TimeKw           Keyword
 hi def link bird2ConfigKw         Keyword

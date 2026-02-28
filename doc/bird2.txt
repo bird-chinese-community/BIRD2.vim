@@ -2,7 +2,7 @@
 
 Author:  BIRD Chinese Community <dev-bird@xmsl.dev>
 License: MPL-2.0
-Version: 1.0.6
+Version: 1.0.7
 
 ==============================================================================
 CONTENTS					*bird2-contents*
@@ -159,6 +159,10 @@ vscode-bird2 ~
 
 ==============================================================================
 CHANGELOG					*bird2-changelog*
+
+1.0.7 (2026-02-28)~
+	- Add missing RPKI keyword highlighting (transport, version, key phrases)
+	- Add vpn4/vpn6/roa4 address keyword highlighting
 
 1.0.6 (2025-08-08)~
 	- Initial release
