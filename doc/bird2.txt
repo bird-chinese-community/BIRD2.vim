@@ -112,6 +112,7 @@ KEYWORDS ~
 
 PROTOCOLS ~
 	bgp, ospf, rip, device, direct, kernel, pipe, babel, radv, rpki, bfd,
+	bmp,
 	static, l3vpn, mrt, perf
 
 DATA TYPES ~
