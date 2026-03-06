@@ -2,7 +2,7 @@
 
 Author:  BIRD Chinese Community <dev-bird@xmsl.dev>
 License: MPL-2.0
-Version: 1.0.7
+Version: 1.0.9
 
 ==============================================================================
 CONTENTS					*bird2-contents*
@@ -160,6 +160,11 @@ vscode-bird2 ~
 
 ==============================================================================
 CHANGELOG					*bird2-changelog*
+
+1.0.9 (2026-03-06)~
+	- Add local/neighbor statement highlighting for symbolic ASNs
+	- Highlight neighbor scoped-interface, port, and symbolic target variants
+	- Align neighbor template coverage with BIRD-LSP parser updates
 
 1.0.7 (2026-02-28)~
 	- Add missing RPKI keyword highlighting (transport, version, key phrases)
