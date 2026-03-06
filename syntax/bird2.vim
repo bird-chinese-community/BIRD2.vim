@@ -129,12 +129,12 @@ syn match  bird2RequireExtNexthop "\<require extended next hop\>\s\+\%(on\|off\)
 " ------------------------
 syn match  bird2LocalAsStmt "\<local\>\s\+\%([0-9a-fA-F:.]\+\|[A-Za-z_][A-Za-z0-9_]*\|'[0-9A-Za-z_.:-]\+'\)\%(\s\+port\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\>" contains=bird2Structure,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2Number
 syn match  bird2LocalAsTemplate "\<local\>\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\>" contains=bird2Structure,bird2SemanticModifier,bird2Variable,bird2Number
-syn match  bird2NeighborStmt "\<neighbor\>\s\+[0-9a-fA-F:.]\+\s*\%(%\s*\%('[0-9A-Za-z_.:-]\+'\|[A-Za-z0-9_.:-]\+\)\)\?\s\+\%(as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2Number
+syn match  bird2NeighborStmt "\<neighbor\>\s\+\%([0-9a-fA-F:.]\+\|\%(as\>\|range\>\)\@![A-Za-z_][A-Za-z0-9_]*\|'[0-9A-Za-z_.:-]\+'\)\s*\%(%\s*\%('[0-9A-Za-z_.:-]\+'\|[A-Za-z0-9_.:-]\+\)\)\?\s\+\%(as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2Number
 syn match  bird2NeighborTemplate "\<neighbor\>\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\>" contains=bird2RoutingKw,bird2Structure,bird2SemanticModifier,bird2Variable,bird2Number
 syn match  bird2NeighborRange "\<neighbor\>\s\+range\s\+[0-9a-fA-F:.\/]\+\%(\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2Prefix,bird2Variable,bird2Number
-syn match  bird2NeighborPort "\<neighbor\>\s\+[0-9a-fA-F:.]\+\%(\s*%\s*\%('[0-9A-Za-z_.:-]\+'\|[A-Za-z0-9_.:-]\+\)\)\?\%(\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?\s\+port\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\>" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2Number
-syn match  bird2NeighborRole "\<neighbor\>\s\+[0-9a-fA-F:.]\+\s\+\%(internal\|external\)\>" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2SemanticModifier
-syn match  bird2NeighborOnlink "\<neighbor\>\s\+[0-9a-fA-F:.]\+\s\+onlink\>" contains=bird2RoutingKw,bird2IPv4,bird2IPv6
+syn match  bird2NeighborPort "\<neighbor\>\s\+\%([0-9a-fA-F:.]\+\|\%(as\>\|range\>\)\@![A-Za-z_][A-Za-z0-9_]*\|'[0-9A-Za-z_.:-]\+'\)\%(\s*%\s*\%('[0-9A-Za-z_.:-]\+'\|[A-Za-z0-9_.:-]\+\)\)\?\%(\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?\s\+port\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\>" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2Number
+syn match  bird2NeighborRole "\<neighbor\>\s\+\%([0-9a-fA-F:.]\+\|\%(as\>\|range\>\)\@![A-Za-z_][A-Za-z0-9_]*\|'[0-9A-Za-z_.:-]\+'\)\s\+\%(internal\|external\)\>" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2SemanticModifier
+syn match  bird2NeighborOnlink "\<neighbor\>\s\+\%([0-9a-fA-F:.]\+\|\%(as\>\|range\>\)\@![A-Za-z_][A-Za-z0-9_]*\|'[0-9A-Za-z_.:-]\+'\)\s\+onlink\>" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable
 syn match  bird2SourceAddress "\<source address\>\s\+[0-9a-fA-F:.]\+" contains=bird2RoutingKw,bird2IPv4,bird2IPv6
 
 " ------------------------
