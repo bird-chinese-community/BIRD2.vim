@@ -127,11 +127,12 @@ syn match  bird2RequireExtNexthop "\<require extended next hop\>\s\+\%(on\|off\)
 " ------------------------
 " Neighbor Statements (repository.neighbor-statements)
 " ------------------------
-syn match  bird2LocalAsStmt "\<local\>\s\+\%([0-9a-fA-F:.]\+\|[A-Za-z_][A-Za-z0-9_]*\|'[^']\+'\)\%(\s\+port\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\>" contains=bird2Structure,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2Number
+syn match  bird2LocalAsStmt "\<local\>\s\+\%([0-9a-fA-F:.]\+\|[A-Za-z_][A-Za-z0-9_]*\|'[0-9A-Za-z_.:-]\+'\)\%(\s\+port\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\>" contains=bird2Structure,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2Number
+syn match  bird2LocalAsTemplate "\<local\>\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\>" contains=bird2Structure,bird2SemanticModifier,bird2Variable,bird2Number
 syn match  bird2NeighborStmt "\<neighbor\>\s\+[0-9a-fA-F:.]\+\s*\%(%\s*\%('[^']\+'\|[A-Za-z0-9_.:-]\+\)\)\?\s\+\%(as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2Number
 syn match  bird2NeighborTemplate "\<neighbor\>\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\>" contains=bird2RoutingKw,bird2Structure,bird2SemanticModifier,bird2Variable,bird2Number
 syn match  bird2NeighborRange "\<neighbor\>\s\+range\s\+[0-9a-fA-F:.\/]\+\%(\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2Prefix,bird2Variable,bird2Number
-syn match  bird2NeighborPort "\<neighbor\>\s\+[0-9a-fA-F:.]\+\%(\s*%\s*\%('[^']\+'\|[A-Za-z0-9_.:-]\+\)\)\?\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\s\+port\s\+[0-9]\+\>" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2Number
+syn match  bird2NeighborPort "\<neighbor\>\s\+[0-9a-fA-F:.]\+\%(\s*%\s*\%('[0-9A-Za-z_.:-]\+'\|[A-Za-z0-9_.:-]\+\)\)\?\%(\s\+as\s\+\%([0-9]\+\|[A-Za-z_][A-Za-z0-9_]*\)\)\?\s\+port\s\+[0-9]\+\>" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2QuotedSymbol,bird2Variable,bird2Number
 syn match  bird2NeighborRole "\<neighbor\>\s\+[0-9a-fA-F:.]\+\s\+\%(internal\|external\)\>" contains=bird2RoutingKw,bird2IPv4,bird2IPv6,bird2SemanticModifier
 syn match  bird2NeighborOnlink "\<neighbor\>\s\+[0-9a-fA-F:.]\+\s\+onlink\>" contains=bird2RoutingKw,bird2IPv4,bird2IPv6
 syn match  bird2SourceAddress "\<source address\>\s\+[0-9a-fA-F:.]\+" contains=bird2RoutingKw,bird2IPv4,bird2IPv6
@@ -288,7 +289,7 @@ syn match  bird2Delimiter   "[{}()\[\];,]"
 " ------------------------
 " Cluster for all patterns
 " ------------------------
-syn cluster bird2All contains=bird2Comment,bird2String,bird2QuotedSymbol,bird2Escape,bird2HexNumber,bird2Number,bird2TimeUnit,bird2IPv4,bird2IPv6,bird2VpnRD,bird2ByteString,bird2BgpPath,bird2BgpWildcard,bird2ASN,bird2Prefix,bird2FilterDef,bird2FunctionDef,bird2TemplateDef,bird2ProtocolDefWithTemplate,bird2ProtocolDefWithName,bird2ProtocolDefAnonymous,bird2NextHopIPv4,bird2NextHopIPv6,bird2NextHopSelf,bird2ExtendedNextHop,bird2NextHopPrefer,bird2NextHopKeep,bird2NextHopAddr,bird2RequireExtNexthop,bird2LocalAsStmt,bird2NeighborStmt,bird2NeighborTemplate,bird2NeighborRange,bird2NeighborPort,bird2NeighborRole,bird2NeighborOnlink,bird2SourceAddress,bird2ImportFilter,bird2ImportFilterInline,bird2ExportWhere,bird2ExportFilter,bird2PrintStmt,bird2ControlFlow,bird2CaseElse,bird2FlowControl,bird2Structure,bird2ProtocolTypeKw,bird2RoutingKw,bird2InterfaceKw,bird2RpkiKw,bird2RpkiPhraseKw,bird2AuthKw,bird2TimeKw,bird2ConfigKw,bird2FlowspecKw,bird2AddressKw,bird2BfdPhraseKw,bird2BabelPhraseKw,bird2BgpPhraseKw,bird2OspfPhraseKw,bird2RipPhraseKw,bird2KernelPhraseKw,bird2PipePhraseKw,bird2SemanticModifier,bird2BuiltinFunc,bird2Property,bird2RouteAttr,bird2Type,bird2Comparison,bird2Logical,bird2Concat,bird2Arithmetic,bird2Range,bird2Accessor,bird2BoolConst,bird2SpecialConst,bird2ScopeConst,bird2SourceConst,bird2DestConst,bird2RoaConst,bird2AspaConst,bird2NetConst,bird2MplsConst,bird2FilterReference,bird2UserVariable,bird2FunctionCall,bird2MethodCall,bird2PropertyAccess,bird2VarDecl,bird2Variable,bird2Delimiter,bird2Keyword
+syn cluster bird2All contains=bird2Comment,bird2String,bird2QuotedSymbol,bird2Escape,bird2HexNumber,bird2Number,bird2TimeUnit,bird2IPv4,bird2IPv6,bird2VpnRD,bird2ByteString,bird2BgpPath,bird2BgpWildcard,bird2ASN,bird2Prefix,bird2FilterDef,bird2FunctionDef,bird2TemplateDef,bird2ProtocolDefWithTemplate,bird2ProtocolDefWithName,bird2ProtocolDefAnonymous,bird2NextHopIPv4,bird2NextHopIPv6,bird2NextHopSelf,bird2ExtendedNextHop,bird2NextHopPrefer,bird2NextHopKeep,bird2NextHopAddr,bird2RequireExtNexthop,bird2LocalAsStmt,bird2LocalAsTemplate,bird2NeighborStmt,bird2NeighborTemplate,bird2NeighborRange,bird2NeighborPort,bird2NeighborRole,bird2NeighborOnlink,bird2SourceAddress,bird2ImportFilter,bird2ImportFilterInline,bird2ExportWhere,bird2ExportFilter,bird2PrintStmt,bird2ControlFlow,bird2CaseElse,bird2FlowControl,bird2Structure,bird2ProtocolTypeKw,bird2RoutingKw,bird2InterfaceKw,bird2RpkiKw,bird2RpkiPhraseKw,bird2AuthKw,bird2TimeKw,bird2ConfigKw,bird2FlowspecKw,bird2AddressKw,bird2BfdPhraseKw,bird2BabelPhraseKw,bird2BgpPhraseKw,bird2OspfPhraseKw,bird2RipPhraseKw,bird2KernelPhraseKw,bird2PipePhraseKw,bird2SemanticModifier,bird2BuiltinFunc,bird2Property,bird2RouteAttr,bird2Type,bird2Comparison,bird2Logical,bird2Concat,bird2Arithmetic,bird2Range,bird2Accessor,bird2BoolConst,bird2SpecialConst,bird2ScopeConst,bird2SourceConst,bird2DestConst,bird2RoaConst,bird2AspaConst,bird2NetConst,bird2MplsConst,bird2FilterReference,bird2UserVariable,bird2FunctionCall,bird2MethodCall,bird2PropertyAccess,bird2VarDecl,bird2Variable,bird2Delimiter,bird2Keyword
 
 " ------------------------
 " Links to default highlight groups
@@ -336,6 +337,7 @@ hi def link bird2NextHopKeep      Statement
 hi def link bird2NextHopAddr      Statement
 hi def link bird2RequireExtNexthop Statement
 hi def link bird2LocalAsStmt      Statement
+hi def link bird2LocalAsTemplate  Statement
 hi def link bird2NeighborStmt     Statement
 hi def link bird2NeighborTemplate Statement
 hi def link bird2NeighborRange    Statement
